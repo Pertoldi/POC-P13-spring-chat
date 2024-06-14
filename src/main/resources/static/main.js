@@ -1,10 +1,14 @@
 let stompClient = null;
 
 function setConnected(connected) {
-  document.getElementById('connect').disabled = connected;
-  document.getElementById('disconnect').disabled = !connected;
+  document.getElementById('connect').style.display = connected ? 'none' : 'inline-block';
+  document.getElementById('disconnect').style.display = connected ? 'inline-block' : 'none';
+  document.getElementById('send').style.display = connected ? 'inline-block' : 'none';
   document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
-  document.getElementById('response').innerHTML = '';
+  document.getElementById('text').style.display = connected ? 'inline-block' : 'none';
+  if (!connected) {
+    document.getElementById('response').innerHTML = '';
+  }
 }
 
 function connect() {
